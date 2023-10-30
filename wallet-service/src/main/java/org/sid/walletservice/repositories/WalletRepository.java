@@ -8,6 +8,6 @@ import java.util.Collection;
 
 @RepositoryRestResource
 public interface WalletRepository extends JpaRepository<Wallet, Long> {
-   /*public Collection<Wallet> findByClientId(Long id);*/
+   public Collection<Wallet> findByClientId(Long id);
 
 }

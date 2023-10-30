@@ -12,7 +12,8 @@ import org.springframework.context.annotation.Bean;
 import java.util.Date;
 
 @SpringBootApplication
-public class WalletServiceApplication {
+public class WalletServiceApplication
+{
 
 	public static void main(String[] args) {
 		SpringApplication.run(WalletServiceApplication.class, args);
@@ -22,40 +23,30 @@ public class WalletServiceApplication {
 	CommandLineRunner start(ClientRepository clientRepository, WalletRepository walletRepository){
 		return args -> {
 
-			Client client1=new Client();
+			Client client1 = new Client();
 			client1.setName("mounir");
 			client1.setEmail("mn@enset.ma");
 			clientRepository.save(client1);
 
-			Wallet wallet1=new Wallet();
+			Client client2 = new Client();
+			client2.setName("hamid");
+			client2.setEmail("hm@enset.ma");
+			clientRepository.save(client2);
+
+
+			Wallet wallet1 = new Wallet();
 			wallet1.setSolde(13000);
 			wallet1.setDateCreation(new Date());
 			wallet1.setDevise("MAD");
+			wallet1.setClient(client1);
 			walletRepository.save(wallet1);
 
-			Wallet wallet2=new Wallet();
+			Wallet wallet2 = new Wallet();
 			wallet2.setSolde(2000);
 			wallet2.setDateCreation(new Date());
 			wallet2.setDevise("EURO");
+			wallet2.setClient(client2);
 			walletRepository.save(wallet2);
-
-
-		/*	System.out.println("------------------------");
-			System.out.println("------clients---------");
-			clientRepository.findAll().forEach(c -> {
-				System.out.println(c.toString());
-			});
-
-
-
-			System.out.println("------------------------");
-			System.out.println("------wallets---------");
-			walletRepository.findAll().forEach(w -> {
-				System.out.println(w.toString());
-			});*/
-
-
-
 
 
 
